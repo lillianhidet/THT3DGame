@@ -1,0 +1,28 @@
+[gd_scene load_steps=5 format=3 uid="uid://buec7463yrqtq"]
+
+[ext_resource type="Script" path="res://objective_health.gd" id="1_5tp1v"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_xo3h5"]
+
+[sub_resource type="PrismMesh" id="PrismMesh_j07hs"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_ct5e3"]
+radius = 0.7675
+
+[node name="Objective" type="Node3D"]
+script = ExtResource("1_5tp1v")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+shape = SubResource("BoxShape3D_xo3h5")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("PrismMesh_j07hs")
+
+[node name="Area3D" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+shape = SubResource("SphereShape3D_ct5e3")
+
+[connection signal="area_entered" from="Area3D" to="." method="entered"]

@@ -1,0 +1,22 @@
+[gd_scene load_steps=5 format=3 uid="uid://clavc3wjdmu1q"]
+
+[ext_resource type="Script" path="res://enemy.gd" id="1_lnw8n"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_l3eoh"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2j0s2"]
+albedo_color = Color(0.490196, 0, 0.0588235, 1)
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_aql0k"]
+
+[node name="Node3D" type="Node3D" groups=["enemy"]]
+script = ExtResource("1_lnw8n")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." groups=["enemy"]]
+mesh = SubResource("SphereMesh_l3eoh")
+surface_material_override/0 = SubResource("StandardMaterial3D_2j0s2")
+
+[node name="Area3D" type="Area3D" parent="." groups=["enemy"]]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" groups=["enemy"]]
+shape = SubResource("SphereShape3D_aql0k")

@@ -1,0 +1,79 @@
+[gd_scene load_steps=2 format=3 uid="uid://by1v16ca5r11a"]
+
+[ext_resource type="Script" path="res://HUD_manager.gd" id="1_uufxu"]
+
+[node name="HUD" type="Control" node_paths=PackedStringArray("life_vallbl", "time_vallbl", "winlose_lbl")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_uufxu")
+life_vallbl = NodePath("life_val")
+time_vallbl = NodePath("timer_val")
+winlose_lbl = NodePath("winlose_label")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -5.0
+offset_top = -5.0
+offset_right = 5.0
+offset_bottom = 5.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(5, 5)
+color = Color(1, 0.313726, 0.580392, 1)
+
+[node name="life_label" type="Label" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+text = "Lives:"
+
+[node name="life_val" type="Label" parent="."]
+layout_mode = 0
+offset_left = 49.0
+offset_top = 1.0
+offset_right = 89.0
+offset_bottom = 24.0
+text = "3
+"
+
+[node name="timer_label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 931.0
+offset_top = 1.0
+offset_right = 1064.0
+offset_bottom = 24.0
+text = "Time Remaining: "
+
+[node name="timer_val" type="Label" parent="."]
+layout_mode = 0
+offset_left = 1066.0
+offset_top = 3.0
+offset_right = 1106.0
+offset_bottom = 26.0
+text = "000"
+
+[node name="winlose_label" type="Label" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -108.5
+offset_top = -34.5
+offset_right = 108.5
+offset_bottom = 34.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 50
+text = "You Lose"

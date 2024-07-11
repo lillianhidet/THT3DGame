@@ -1,0 +1,45 @@
+[gd_scene load_steps=8 format=3 uid="uid://bblid3ms328v4"]
+
+[ext_resource type="PackedScene" uid="uid://bc1vsfaeahrn" path="res://character_body_3d.tscn" id="1_ydxyo"]
+[ext_resource type="PackedScene" uid="uid://buec7463yrqtq" path="res://objective.tscn" id="2_0r3mw"]
+[ext_resource type="PackedScene" uid="uid://clavc3wjdmu1q" path="res://enemy_a.tscn" id="3_oi30n"]
+[ext_resource type="PackedScene" uid="uid://ddfqbi81g881i" path="res://spawner_scene.tscn" id="4_g2uh6"]
+[ext_resource type="PackedScene" uid="uid://by1v16ca5r11a" path="res://HUD.tscn" id="5_qc377"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_hq8es"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_p4o3w"]
+size = Vector3(1.97278, 0.167236, 1.97559)
+
+[node name="World" type="Node3D"]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+transform = Transform3D(20, 0, 0, 0, 20, 0, 0, 0, 20, 0, 0, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D"]
+mesh = SubResource("PlaneMesh_hq8es")
+skeleton = NodePath("../..")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00201416, -0.0684814, 0.00439453)
+shape = SubResource("BoxShape3D_p4o3w")
+
+[node name="CharacterBody3D" parent="." instance=ExtResource("1_ydxyo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.42692, -3.52755)
+
+[node name="Objective" parent="." instance=ExtResource("2_0r3mw")]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.454649, 0)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.0514644, 0.998675, 0, -0.998675, 0.0514644, 0, 9.52422, 0)
+
+[node name="spawner" parent="." instance=ExtResource("4_g2uh6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.9894, 4.63442, 0)
+enemy_scene = ExtResource("3_oi30n")
+
+[node name="Node3D" parent="." instance=ExtResource("3_oi30n")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16, 5, 2)
+
+[node name="HUD" parent="." instance=ExtResource("5_qc377")]
+unique_name_in_owner = true
